@@ -24,24 +24,13 @@ public class Brand {
     this.models = models;
   }
 
-  public int getTotalValidYear() {
+  public int getTotalValidYears() {
     int c = 0;
-    for (int i = 0; i < models.length-1; i++) {
+    for (int i = 0; i < models.length; i++) {
       for(int j = 0; j < models[i].getYears().length; j++) {
         if (models[i].getYears()[j].isValid()) c++;
       }
     }
-
-    /* Mejor forma
-    for (CarModel carModel : models) {
-      for (CarYear year : carModel.getYears()) {
-         if (year.isValid()) {
-          c++;
-        }
-      }
-    }
-    */
-
     return c;
   }
 

@@ -6,8 +6,8 @@ public class BrandController {
   public Brand[] sortBubbleDesc(Brand[] brands) {
 
     for (int i = 0; i < brands.length; i++) {
-      for (int j = i + 1; j < brands.length - 1; j++){
-        if (brands[j].getTotalValidYear() > brands[j + 1].getTotalValidYear()) {
+      for (int j = i + 1; j < brands.length; j++){
+        if (brands[j].getTotalValidYears() > brands[j + 1].getTotalValidYears()) {
           Brand temp = brands[i];
           brands[i] = brands[j];
           brands[j] = temp;
@@ -25,7 +25,7 @@ public class BrandController {
 
     while (left <= right) {
         int mid = (left + right) / 2;
-        int midYears = brands[mid].getTotalValidYear();
+        int midYears = brands[mid].getTotalValidYears();
         if (midYears == validYears) {
             return brands[mid];
         }
