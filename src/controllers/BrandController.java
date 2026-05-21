@@ -4,21 +4,18 @@ import models.Brand;
 
 public class BrandController {
   public Brand[] sortBubbleDesc(Brand[] brands) {
-
-    for (int i = 0; i < brands.length; i++) {
-      for (int j = i + 1; j < brands.length; j++){
-        if (brands[j].getTotalValidYears() > brands[j + 1].getTotalValidYears()) {
-          Brand temp = brands[i];
-          brands[i] = brands[j];
-          brands[j] = temp;
+int n = brands.length;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (brands[j].getTotalValidYears() < brands[j + 1].getTotalValidYears()) {
+                Brand temp = brands[j];
+                brands[j] = brands[j + 1];
+                brands[j + 1] = temp;
+            }
         }
-      }
     }
     return brands;
-
   }
-
-
   public Brand binarySearchByValidYears(Brand[] brands, int validYears,boolean isAscending) {
     int left = 0;
     int right = brands.length - 1;

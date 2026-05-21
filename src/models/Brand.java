@@ -38,6 +38,4 @@ public class Brand {
   public String toString() {
     return "Brand [brandName=" + brandName + ", models=" + Arrays.toString(models) + "]";
   }
-  
-
 }
