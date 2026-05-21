@@ -7,12 +7,11 @@ public class BrandController {
 
     for (int i = 0; i < brands.length; i++) {
       for (int j = i + 1; j < brands.length - 1; j++){
-        Brand temp = null;
-        if (brands[i].getTotalValidYear() > brands[j].getTotalValidYear())
-        temp = brands[i];
-        brands[i] = brands[j];
-        brands[j] = temp;
-
+        if (brands[j].getTotalValidYear() > brands[j + 1].getTotalValidYear()) {
+          Brand temp = brands[i];
+          brands[i] = brands[j];
+          brands[j] = temp;
+        }
       }
     }
     return brands;
@@ -25,31 +24,20 @@ public class BrandController {
     int right = brands.length - 1;
 
     while (left <= right) {
-        int mid = left + (right - left) / 2;
-        int midValidYears = brands[mid].getTotalValidYear();
-
-        if (midValidYears == validYears) {
+        int mid = (left + right) / 2;
+        int midYears = brands[mid].getTotalValidYear();
+        if (midYears == validYears) {
             return brands[mid];
         }
-
         if (isAscending) {
-            // Arreglo ordenado ascendentemente
-            if (midValidYears < validYears) {
-                left = mid + 1;  // Buscar en la mitad derecha
-            } else {
-                right = mid - 1; // Buscar en la mitad izquierda
-            }
+            if (midYears < validYears) left = mid + 1;
+            else right = mid - 1;
         } else {
-            // Arreglo ordenado descendentemente
-            if (midValidYears > validYears) {
-                left = mid + 1;  // Buscar en la mitad derecha
-            } else {
-                right = mid - 1; // Buscar en la mitad izquierda
-            }
+            if (midYears > validYears) left = mid + 1;
+            else right = mid - 1;
         }
     }
-
-    return null; // No encontrado
+    return null;
 }
 
 }
